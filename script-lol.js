@@ -1,3 +1,6 @@
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelector(".loader").style.backgroundColor = "#dadada";
+});
 let progress = 0;
 const barTop = document.querySelector('.bar-top');
 const barBottom = document.querySelector('.bar-bottom');
@@ -34,7 +37,7 @@ const loadingInterval = setInterval(() => {
       }, 2000);
     }, 1000);
   }
-}, 30);
+}, 3);
 const menuToggle = document.querySelector('.menu-toggle');
 const sussyDiv = document.querySelector('.sussy-div');
 

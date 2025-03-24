@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'Gome';
+  src: url('/fonts/GomePixel-ARJd7.otf') format('woff2'),
+       url('/fonts/GomePixel-DYJX1.otf') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'vcr';
+  src: url('/fonts/VCR_OSD_MONO_1.001.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html, body {
   -ms-overflow-style: none; 
   scrollbar-width: none; 
@@ -24,34 +38,124 @@ html, body {
     align-items: center;
     justify-content: center;
   }
-  
+  .loaders {
+    transition: opacity 5s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #dadada;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .loading-container {
     position: relative;
     width: 100%;
     height: 100%;
   }
   
+.word {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+.word {
+  display: inline-block; /* Ensures inline positioning */
+}
+.word:nth-child(1) { animation-delay: 5s; }
+.word:nth-child(2) { animation-delay: 5.15s; }
+.word:nth-child(3) { animation-delay: 5.3s; }
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      filter: blur(10px);
+      transform: translateY(20px); /* Moves from bottom */
+  }
+  to {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translateY(0); /* Ends in normal position */
+  }
+}
+.loading-bars {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  background: #dadada;
+  transition: height 1s ease, transform 1s ease;
+}
   .loading-bar {
     position: absolute;
     width: 100%;
     background: #dadada;
     transition: height 1s ease, transform 1s ease;
   }
-  
-  .bar-top {
-    bottom: 50%;
-    height: 0;
-    transform: translateY(1);
-    transform-origin: bottom;
-  }
-  
-  .bar-bottom {
-    top: 50%;
-    height: 0;
-    transform: translateY(-1);
-    transform-origin: top;
-  }
-  
+  /* Original state for the bars */
+/* Original state */
+.bar-top {
+  bottom: 50%;
+  height: 0;
+  transform: translateY(1);
+  transform-origin: bottom;
+  transition: all 0.7s ease;
+}
+
+.bar-bottom {
+  top: 50%;
+  height: 0;
+  transform: translateY(-1);
+  transform-origin: top;
+  transition: all 0.7s ease;
+}
+
+/* Animated state applied via the .animate-bars class */
+.bar-top.animate-bars {
+  z-index: 10000000000000000000;
+  bottom: 0;        /* Adjust as needed */
+  height: 100vh;    /* Adjust to cover the screen */
+  transform: translateY(0);
+}
+
+.bar-bottom.animate-bars {
+  z-index: 1000000000000000000;
+  top: 0;           /* Adjust as needed */
+  height: 100vh;    /* Adjust to cover the screen */
+  transform: translateY(0);
+}/* Start bars at full height */
+.bar-tops {
+  bottom: 0;
+  height: 100vh; /* Starts fully covering */
+  transform: translateY(0);
+  transform-origin: bottom;
+  transition: all 0.7s ease;
+}
+
+.bar-bottoms {
+  top: 0;
+  height: 100vh; /* Starts fully covering */
+  transform: translateY(0);
+  transform-origin: top;
+  transition: all 0.7s ease;
+}
+
+.bar-tops.animate-bars {
+  z-index: 10000000000000000000;
+  bottom: 0;        /* Adjust as needed */
+  height: 100vh;    /* Adjust to cover the screen */
+  transform: translateY(0);
+}
+
+.bar-bottoms.animate-bars {
+  z-index: 1000000000000000000;
+  top: 0;           /* Adjust as needed */
+  height: 100vh;    /* Adjust to cover the screen */
+  transform: translateY(0);
+}/* Start bars at full height */
+
+
   .loader-text {
     position: absolute;
     top: 50%;
@@ -88,8 +192,12 @@ html, body {
   font-size: 2vw;
   margin: 0;
   padding: 2px 0;
-  color: rgb(255, 255, 255); 
+  color: rgb(255, 255, 255);
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 4s; /* Delay comes AFTER the animation property */
 }
+
 
   @import url('https://fonts.googleapis.com/css2?family=Jersey+25&display=swap');
   .jersey-25-regular {
@@ -171,6 +279,7 @@ html, body {
 
 
 .topbar {
+  font-family: 'vcr', sans-serif;
     align-items: left;
     align-content: center;
     text-align: center;
@@ -183,13 +292,13 @@ html, body {
     padding: 10px 20px;
     color: #fff;
     z-index: 10000;
-        mix-blend-mode: difference;
-
+mix-blend-mode: difference;
 }
 
 
 .nav-links {
-
+  font-family: 'vcr', sans-serif;
+mix-blend-mode: difference;
     align-items: center;
     text-align: center;
     border-radius: 100px;
@@ -205,8 +314,8 @@ html, body {
 .nav-links a {
   mix-blend-mode: difference;
   padding: 10px;
-    font-family: "tiny5";
-    color: #fff;
+  font-family: 'vcr';
+      color: #fff;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 }
@@ -228,6 +337,8 @@ background-color: #000000;
       transform: translateY(0); 
   }
 }
+
+
 
 .hamburger {
   
@@ -297,9 +408,14 @@ padding-bottom: 9px;
           transform: translateY(0); 
       }
   }
+  
     .nav-links {
+      font-family: 'vcr';
       filter: blur(10px);
       transform: translateY(20px); 
+      transform: translateX(-20px); 
+padding-bottom: 20px;
+padding-top: 20px;
       pointer-events: none;
       opacity: 0; 
       transition: all 0.7s ease;
@@ -310,7 +426,7 @@ padding-bottom: 9px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
       margin-left: 23px;
       border-radius: 25px;
-      width: 30vw;
+      width: 90vw;
       display: flex; 
       background-color: #ffffff;
       z-index: 100;
@@ -321,28 +437,88 @@ padding-bottom: 9px;
       opacity: 1; 
           filter: blur(0px);
           transform: translateY(0);
+          transform: translateX(0);
+
     }
-    
+    .menu-toggle:checked ~ main {
+      filter: blur(5px);
+      transition: filter 0.3s ease;
+    }
+    .nav-links a {
+      font-family: 'vcr', sans-serif;
+            font-size: 10vw;
+      line-height: normal;
+    }
 #selected {
 font-weight: 900;
 }
-#contact {
-  border: 3px solid #ff8f8f; 
-  background-color: #ff8f8f;
-  font-family: poppins;
-  color: #000000;
-  text-decoration: none;
-  border-radius: 100px;
-  transition: all 0.2s ease-in-out;
-  padding: 10px;
-  font-weight: 500;
-}
-#contact:hover {
-  margin-top: 10px;
-  padding: 10px;
-  font-weight: 900;
-  background-color: #00b6b600;
-  color: #ff8f8f;
-  border: 3px solid #ff8f8f; 
-}
+@media (max-width: 768px) {
+  .nav-links {
+    font-family: 'vcr';
+    filter: blur(10px);
+    transform: translateY(-20px) translateX(-20px);
+    padding-bottom: 20VWpx;
+    padding-top: 10px;  /* Reduced top padding */
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.7s ease;
+    mix-blend-mode: difference;
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    margin-left: 23px;
+    border-radius: 25px;
+    width: 80vw;
+    display: flex;
+    background-color: #ffffff;
+    z-index: 100;
+  }
   
+  /* The rest of your mobile-specific rules */
+  .nav-links {
+    justify-content: flex-start; /* Aligns links to the left */
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 20px; /* Adjust spacing if needed */
+  }
+  
+  .nav-links a {
+    text-align: left;
+    width: 100%; /* Ensures full width for proper alignment */
+    position: relative; /* Needed for absolute positioning of the dot */
+  }
+  
+  /* Default hidden dot for all links */
+  .nav-links a::before {
+    content: "·"; /* The dot */
+    display: inline-block;
+    transform: scale(0); /* Hidden by default */
+    transition: transform 0.3s ease-in-out, padding 0.3s ease-in-out;
+    margin-right: 5px;
+    padding: 0px; /* Shrinks when not hovered */
+  }
+  
+  /* Always visible dot for #selected */
+  #selected::before {
+    transform: scale(1); /* Always visible */
+    padding: 3px; /* Consistent padding */
+  }
+  
+  /* Show dot on hovered link */
+  .nav-links a:hover::before {
+    transform: scale(2);
+    padding: 3px;
+  }
+  
+  #selected:hover::before {
+    padding: 6px;
+  }
+  
+  /* Slight weight increase on hover */
+  .nav-links a:hover {
+    font-weight: 500;
+    scale: 1;
+  }
+}
+}
