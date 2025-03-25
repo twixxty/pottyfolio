@@ -13,7 +13,6 @@
 }
 
 html, body {
-  -ms-overflow-style: none; 
   scrollbar-width: none; 
   text-rendering: pixelated;
 -webkit-tap-highlight-color: transparent;
@@ -21,7 +20,6 @@ html, body {
     color: #dadada;
     margin: 0;
     padding: 0;
-    overflow: hidden;
     font-family: Arial, sans-serif;
   }
   
@@ -64,9 +62,9 @@ html, body {
 .word {
   display: inline-block; /* Ensures inline positioning */
 }
-.word:nth-child(1) { animation-delay: 5s; }
-.word:nth-child(2) { animation-delay: 5.15s; }
-.word:nth-child(3) { animation-delay: 5.3s; }
+.word:nth-child(1) { animation-delay: 1s; }
+.word:nth-child(2) { animation-delay: 1.15s; }
+.word:nth-child(3) { animation-delay: 1.3s; }
 
 @keyframes fadeIn {
   from {
@@ -186,7 +184,7 @@ html, body {
     padding: 2px 0;
     color: rgb(255, 255, 255); 
 }
-.sussy-div p {
+#desc {
   font-weight: 900;
   font-family: "doto";
   font-size: 2vw;
@@ -195,7 +193,7 @@ html, body {
   color: rgb(255, 255, 255);
   opacity: 0;
   animation: fadeIn 1s forwards;
-  animation-delay: 4s; /* Delay comes AFTER the animation property */
+  animation-delay: 1.4s; /* Delay comes AFTER the animation property */
 }
 
 
@@ -209,7 +207,7 @@ html, body {
     .sussy-div h1 {
       font-size: 15vw; 
     }
-    .sussy-div p {
+    #desc {
       font-family: "doto";
       font-size: 5vw;
       margin: 0;
@@ -222,7 +220,7 @@ html, body {
     .sussy-div h1 {
       font-size: 18vw; 
     }
-    .sussy-div p {
+    #desc {
       font-family: "doto";
       font-size: 5vw;
       margin: 0;
@@ -235,7 +233,6 @@ html, body {
     background-color: black;
     height: 100vh;
     margin: 0rem;
-    overflow: hidden; 
   }
   
   @keyframes rotate {
@@ -253,7 +250,7 @@ html, body {
   }
   
   #blob {
-
+    z-index: 0;
     transform: scale(1.5);
     background-color: white;
     height: 34vmax;
@@ -272,7 +269,7 @@ html, body {
     height: 100%;
     width: 100%;
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     backdrop-filter: blur(12vmax);
   }
   
@@ -322,19 +319,14 @@ mix-blend-mode: difference;
 
 .nav-links a:hover {
   scale: 1.1;
-background-color: #000000;
     font-weight: 900;
 }
 @keyframes fadeOut {
   to {
       opacity: 0;
-      filter: blur(10px);
-      transform: translateY(20px); 
   }
   from {
       opacity: 1;
-      filter: blur(0px);
-      transform: translateY(0); 
   }
 }
 
@@ -521,4 +513,194 @@ font-weight: 900;
     scale: 1;
   }
 }
+}
+section {
+  display: none;
+  opacity: 0;
+}
+.active {
+  z-index: 10000;
+
+  display: block;
+  opacity: 1;
+}
+/* Fade out animation */
+.fade-out {
+  animation: fadeOut 0.8s forwards;
+}
+/* Fade in animation */
+.fade-in {
+  z-index: 1000000000000;
+  animation: fadeIn 0.8s forwards;
+}
+
+
+.about-content {
+  animation: fadeIn 0.7s forwards;
+
+  display: flex;
+  gap: 2rem;
+  margin: 50px;
+}
+
+.text-content,
+.image-content {
+  flex: 1; 
+}
+
+.text-content {
+  order: 1; /* Text on the left (desktop) */
+}
+
+.image-content {
+  order: 2; /* Image on the right (desktop) */
+}
+
+.image-content {
+  display: flex;
+  justify-content: center; /* Centers the image horizontally */
+  align-items: center;     /* Ensures vertical alignment (optional) */
+}
+
+.image-content img {
+  width: 95%;        
+  max-width: 700px;  
+  border-radius: 12px;
+}
+
+
+.additional-section,
+.extra-section {
+  animation: fadeIn 0.7s forwards;
+
+  margin-top: 50px;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+
+@media (max-width: 768px) {
+  .about-content {
+    margin: 10px;
+   flex-direction: column;
+  }
+
+  .image-content {
+      order: 1; 
+  }
+
+  .text-content {
+      order: 2; 
+  }
+}
+#abouttxt {
+  font-size: 40px;
+  margin-left: 40px;
+  font-family: poppins;
+  color: aliceblue;
+}
+#aboutdesc {
+  font-family: poppins;
+  color: rgba(240, 248, 255, 0.623);
+  line-height: 1.6;
+}
+#h3 {
+  font-size: 30px;
+  margin-left: 40px;
+  font-family: poppins;
+  color: aliceblue;
+}
+
+.image-content {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;  
+  text-align: center; 
+}
+
+.image-content img {
+  width: 90%;
+  max-width: 900px;
+  border-radius: 12px;
+  margin-bottom: 15px;  
+}
+
+.image-links {
+  display: flex;
+  gap: 10px; 
+}
+
+.btn {
+  color: #fff;
+  font-family: poppins;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  color: #ff8f8f;
+  font-weight: 700;
+}
+#button {
+  opacity: 0;
+  z-index: 100000;
+  color: #000000;
+  background-color: #bababa;
+  text-decoration: none;
+  padding: 10px;
+  font-family: tiny5;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border: 2px solid rgb(255, 255, 255);
+  mix-blend-mode: difference;
+  
+  /* Ensure animation only plays on page load */
+  animation: fadebutt 1s forwards;
+  animation-delay: 1.5s;
+}
+@keyframes fadebutt {
+  from {
+    scale: 1.5;
+      filter: blur(5px);
+  }
+  to {
+    scale: 1;
+      opacity: 1;
+      filter: blur(0px);
+      transform: translateY(0); /* Ends in normal position */
+  }}
+#button:hover {
+  text-transform: uppercase;
+color: #bababa;
+background-color: #000000;
+border: 2px solid rgb(255, 255, 255);
+animation: fadebutt 0.5s forwards;
+
+}
+/* Hide contact section initially */
+#contact {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(20px); /* Start slightly below */
+  transition: opacity 0.7s ease, transform 0.7s ease, visibility 0s linear 0.7s;
+}
+
+.sussy-div {
+  opacity: 1;
+  transition: opacity 0.7s ease;
+}
+
+.sussy-div.hidden {
+  display: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#contact.visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.7s ease, transform 0.7s ease, visibility 0s linear;
 }

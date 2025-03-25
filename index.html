@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="icon" id="favicon" type="image/png" href="https://glargle.netlify.app/image.png">
+  <meta property="og:title" content="twixxt" id="ogTitle">
+  <meta property="og:description" content="Hammad's personal Portfolio – a web developer, video editor, and tech enthusiast.">
+  <meta property="og:image" content="https://glargle.netlify.app/image.png" id="ogImage">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://twixxt.vercel.app">
+  <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
@@ -20,37 +28,34 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Jersey+25&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <div id="blob"></div>
-    <div id="blur"></div>
-    <nav class="topbar">
-        <input type="checkbox" id="menu-toggle" class="menu-toggle">
-        <label for="menu-toggle" class="hamburger">&#9776;</label>
-        <div class="nav-links">
-            <a id="selected" href="index.html">Home</a>
-            <a href="/about.html">About</a>
-            <a href="work.html">Work</a>
-            <a href="contact.html">Contact</a>
-        </div>
-
-    </nav>
-<main>
-  <div class="loader">
-    <div class="loading-container">
-      <div class="loading-bar bar-top"></div>
-      <div class="loading-bar bar-bottom"></div>
-    </div>
-  </div>
   
+   
+<main>
+
+
+<section id="home" class="active">
+  <div id="blob"></div>
+  <div id="blur"></div>
   <div class="sussy-div">
+    <div class="trans">
     <h1>
       <span class="word">HAMMAD</span>
       <span class="word">ALAM</span>
       <span class="word">KHAN</span><br>
   </h1>
-    <p>A Freelance Web Developer and Designer based in India</p>
-  </div>
+    <p id="desc">A Freelance Web Developer and Designer based in India</p><br>
+    <a href="mailto:hammadalam7867@gmail.com" id="button" class="shiny-border" data-target="contact">contact</a>
+    
+
+  </div></div>
+</section>
+<section id="contact">
+  <h2>Contact Me</h2>
+  <p>This is the contact section.</p>
+</section>
 </main>
   <script src="script.js"></script>
   <script src="fluid.js"></script>
